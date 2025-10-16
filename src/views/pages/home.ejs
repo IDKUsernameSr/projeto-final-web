@@ -1,0 +1,28 @@
+<%- include("../partials/head") %>
+<%- include("../partials/navbar") %>
+
+<main class="container py-5">
+  <div class="row g-4">
+    <div class="col-12 col-lg-8">
+      <div class="p-4 rounded-3 bg-white shadow-sm">
+        <h1 class="h4 mb-2">Bem-vindo à Locadora</h1>
+        <p class="text-muted">Banco conectado: <strong><%= dbOk ? "SIM" : "NÃO" %></strong></p>
+        <p class="mb-0">Nas próximas etapas vamos criar os CRUDs.</p>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4">
+      <div class="p-4 rounded-3 bg-white shadow-sm">
+        <h2 class="h6 text-uppercase text-muted">Próximos passos</h2>
+        <ol class="mb-0">
+          <li>Definir Models (Veículo, Cliente, Locação, Usuário)</li>
+          <li>CRUD de Veículos</li>
+          <li>CRUD de Clientes</li>
+          <li>CRUD de Locações (com JOIN)</li>
+          <li>Login (sessão + bcrypt)</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include("../partials/footer") %>
