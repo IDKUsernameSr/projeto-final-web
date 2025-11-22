@@ -1,5 +1,52 @@
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="/">Locadora</a>
+
+    <a class="navbar-brand fw-bold" href="/">Locadora</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+
+        <% if (user) { %>
+          <!-- CRUDs só aparecem para usuários logados -->
+          <li class="nav-item">
+            <a class="nav-link" href="/clientes">Clientes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/veiculos">Veículos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/locacoes">Locações</a>
+          </li>
+        <% } %>
+
+      </ul>
+
+      <ul class="navbar-nav">
+
+        <% if (!user) { %>
+          <li class="nav-item ms-2">
+            <a class="btn btn-outline-light btn-sm" href="/login">Entrar</a>
+          </li>
+          <li class="nav-item ms-2">
+            <a class="btn btn-outline-light btn-sm" href="/register">Registrar</a>
+          </li>
+        <% } else { %>
+          <li class="nav-item d-flex align-items-center text-white me-3">
+            Olá, <strong class="ms-1"><%= user.nome %></strong>
+          </li>
+          <li class="nav-item">
+            <form action="/logout" method="POST">
+              <button class="btn btn-light btn-sm">Sair</button>
+            </form>
+          </li>
+        <% } %>
+
+      </ul>
+    </div>
+
   </div>
 </nav>

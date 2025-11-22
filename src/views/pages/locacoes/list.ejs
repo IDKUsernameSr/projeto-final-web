@@ -1,0 +1,48 @@
+<%- include('../../partials/header') %>
+<%- include('../../partials/navbar') %>
+
+<main class="container py-5">
+  <div class="d-flex justify-content-between mb-4">
+    <h2>Locações</h2>
+    <a href="/locacoes/novo" class="btn btn-primary">Nova locação</a>
+  </div>
+
+  <% if (success) { %>
+    <div class="alert alert-success"><%= success %></div>
+  <% } %>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Veículo</th>
+          <th>Período</th>
+          <th>Valor Total</th>
+          <th style="width: 160px;">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% locacoes.forEach(l => { %>
+          <tr>
+            <td><%= l.cliente_nome %></td>
+            <td><%= l.marca %> <%= l.modelo %> - <%= l.placa %></td>
+            <td><%= formatDate(l.data_inicio) %> → <%= formatDate(l.data_fim) %></td>
+            <td>R$ <%= l.valor_total %></td>
+            <td>
+              <a href="/locacoes/<%= l.id %>/editar" class="btn btn-sm btn-outline-secondary">Editar</a>
+
+              <form method="POST" action="/locacoes/<%= l.id %>/deletar"
+                    class="d-inline"
+                    onsubmit="return confirm('Excluir esta locação?');">
+                <button class="btn btn-sm btn-outline-danger">Excluir</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<%- include('../../partials/footer') %>

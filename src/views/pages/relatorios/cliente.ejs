@@ -1,0 +1,37 @@
+<%- include('../../partials/header') %>
+<%- include('../../partials/navbar') %>
+
+<main class="container py-4">
+  <h2>Carros alugados por <%= cliente.nome %></h2>
+  <p class="text-muted mb-4">CPF: <%= cliente.cpf %></p>
+
+  <% if (locacoes.length === 0) { %>
+    <div class="alert alert-info">Este cliente não possui locações.</div>
+  <% } else { %>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Veículo</th>
+          <th>Período</th>
+          <th>Valor Total</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% locacoes.forEach(l => { %>
+          <tr>
+            <td><%= l.marca %> <%= l.modelo %> - <%= l.placa %></td>
+            <td><%= formatDate(l.data_inicio) %> → <%= formatDate(l.data_fim) %></td>
+            <td>R$ <%= l.valor_total %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+  <% } %>
+
+  <a href="/clientes" class="btn btn-secondary mt-3">Voltar</a>
+</main>
+
+<%- include('../../partials/footer') %>

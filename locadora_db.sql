@@ -1,5 +1,3 @@
-CREATE DATABASE locadora_db;
-
 CREATE TABLE usuarios (
   id SERIAL PRIMARY KEY,
   nome TEXT NOT NULL,

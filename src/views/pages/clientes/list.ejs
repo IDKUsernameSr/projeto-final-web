@@ -1,0 +1,55 @@
+<%- include('../../partials/header') %>
+<%- include('../../partials/navbar') %>
+
+<main class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Clientes</h2>
+    <a href="/clientes/novo" class="btn btn-primary">Novo cliente</a>
+  </div>
+
+  <% if (error) { %>
+    <div class="alert alert-danger"><%= error %></div>
+  <% } %>
+
+  <% if (success) { %>
+    <div class="alert alert-success"><%= success %></div>
+  <% } %>
+
+  <% if (clientes.length === 0) { %>
+    <p>Nenhum cliente cadastrado.</p>
+  <% } else { %>
+    <div class="table-responsive">
+      <table class="table table-striped align-middle">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th style="width: 160px;">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% clientes.forEach(c => { %>
+            <tr>
+              <td><%= c.nome %></td>
+              <td><%= c.cpf %></td>
+              <td><%= c.telefone || '-' %></td>
+              <td><%= c.email || '-' %></td>
+              <td>
+                <a href="/clientes/<%= c.id %>/editar" class="btn btn-sm btn-outline-secondary">Editar</a>
+                <form method="POST" action="/clientes/<%= c.id %>/deletar" class="d-inline"
+                      onsubmit="return confirm('Tem certeza que deseja excluir este cliente?');">
+                  <button class="btn btn-sm btn-outline-danger">Excluir</button>
+                </form>
+                <a href="/relatorios/cliente/<%= c.id %>" class="btn btn-sm btn-outline-primary mt-1">Locações</a>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  <% } %>
+</main>
+
+<%- include('../../partials/footer') %>

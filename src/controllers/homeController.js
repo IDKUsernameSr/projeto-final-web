@@ -7,5 +7,5 @@ exports.index = async (req, res) => {
   } catch {
     dbOk = false;
   }
-  res.render("pages/home", { title: "Locadora — Início", dbOk });
+  res.render("pages/home", { title: "Locadora — Home", dbOk });
 };

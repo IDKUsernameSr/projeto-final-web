@@ -1,28 +1,57 @@
-<%- include("../partials/head") %>
+<%- include("../partials/header") %>
 <%- include("../partials/navbar") %>
 
-<main class="container py-5">
-  <div class="row g-4">
-    <div class="col-12 col-lg-8">
-      <div class="p-4 rounded-3 bg-white shadow-sm">
-        <h1 class="h4 mb-2">Bem-vindo à Locadora</h1>
-        <p class="text-muted">Banco conectado: <strong><%= dbOk ? "SIM" : "NÃO" %></strong></p>
-        <p class="mb-0">Nas próximas etapas vamos criar os CRUDs.</p>
-      </div>
-    </div>
-    <div class="col-12 col-lg-4">
-      <div class="p-4 rounded-3 bg-white shadow-sm">
-        <h2 class="h6 text-uppercase text-muted">Próximos passos</h2>
-        <ol class="mb-0">
-          <li>Definir Models (Veículo, Cliente, Locação, Usuário)</li>
-          <li>CRUD de Veículos</li>
-          <li>CRUD de Clientes</li>
-          <li>CRUD de Locações (com JOIN)</li>
-          <li>Login (sessão + bcrypt)</li>
-        </ol>
-      </div>
-    </div>
+<main class="container py-4">
+
+  <!-- HERO / HEADER -->
+  <div class="bg-white p-4 rounded-3 shadow-sm mb-4">
+    <h1 class="h4 mb-1">Sistema de Locadora</h1>
+    <p class="text-muted mb-0">
+      Gerencie clientes, veículos e locações de forma simples e eficiente.
+    </p>
   </div>
+
+  <!-- CARDS PRINCIPAIS -->
+  <div class="row g-3">
+    
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title mb-2">Clientes</h5>
+          <p class="card-text text-muted small">
+            Cadastro, edição e consulta de clientes registrados na locadora.
+          </p>
+          <a href="/clientes" class="btn btn-outline-primary btn-sm">Acessar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title mb-2">Veículos</h5>
+          <p class="card-text text-muted small">
+            Gerenciamento da frota de veículos disponíveis para locação.
+          </p>
+          <a href="/veiculos" class="btn btn-outline-primary btn-sm">Acessar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title mb-2">Locações</h5>
+          <p class="card-text text-muted small">
+            Registro e acompanhamento das locações realizadas.
+          </p>
+          <a href="/locacoes" class="btn btn-outline-primary btn-sm">Acessar</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 </main>
 
 <%- include("../partials/footer") %>

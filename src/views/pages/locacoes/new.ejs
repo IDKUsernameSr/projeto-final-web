@@ -1,0 +1,48 @@
+<%- include('../../partials/header') %>
+<%- include('../../partials/navbar') %>
+
+<main class="container py-5" style="max-width: 700px;">
+  <h2>Nova locação</h2>
+
+  <% if (error) { %>
+    <div class="alert alert-danger mt-3"><%= error %></div>
+  <% } %>
+
+  <form method="POST" action="/locacoes" class="mt-3">
+
+    <div class="mb-3">
+      <label class="form-label">Cliente</label>
+      <select name="cliente_id" class="form-select" required>
+        <option value="">Selecione...</option>
+        <% clientes.forEach(c => { %>
+          <option value="<%= c.id %>"><%= c.nome %></option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Veículo</label>
+      <select name="veiculo_id" class="form-select" required>
+        <option value="">Selecione...</option>
+        <% veiculos.forEach(v => { %>
+          <option value="<%= v.id %>"><%= v.marca %> <%= v.modelo %> - <%= v.placa %></option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Data início</label>
+      <input type="date" name="data_inicio" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label>Data fim</label>
+      <input type="date" name="data_fim" class="form-control" required>
+    </div>
+
+    <button class="btn btn-success">Salvar</button>
+    <a href="/locacoes" class="btn btn-secondary ms-2">Cancelar</a>
+  </form>
+</main>
+
+<%- include('../../partials/footer') %>
