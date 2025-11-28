@@ -1,30 +1,29 @@
-// src/models/veiculoModel.js
 const pool = require('../config/db');
 
 module.exports = {
   async listarTodos() {
     const result = await pool.query(
-      'SELECT * FROM veiculos ORDER BY modelo ASC'
+      'SELECT * FROM veiculos ORDER BY modelo ASC' // lista todos
     );
     return result.rows;
   },
 
   async listarDisponiveis() {
     const result = await pool.query(
-      "SELECT * FROM veiculos WHERE status = 'disponível' ORDER BY modelo ASC"
+      "SELECT * FROM veiculos WHERE status = 'disponível' ORDER BY modelo ASC" // somente disponiveis
     );
     return result.rows;
   },
 
   async buscarPorId(id) {
     const result = await pool.query(
-      'SELECT * FROM veiculos WHERE id = $1',
+      'SELECT * FROM veiculos WHERE id = $1',  // busca por id
       [id]
     );
     return result.rows[0];
   },
 
-  // ✅ cria veículo SEM mexer no status -> usa DEFAULT do banco
+  // cria veículo
   async criar({ marca, modelo, placa, tipo, valor_diaria }) {
     const result = await pool.query(
       `INSERT INTO veiculos (marca, modelo, placa, tipo, valor_diaria)
@@ -35,7 +34,7 @@ module.exports = {
     return result.rows[0];
   },
 
-  // ✅ atualiza dados básicos, NÃO mexe no status
+  // atualiza
   async atualizar(id, { marca, modelo, placa, tipo, valor_diaria }) {
     const result = await pool.query(
       `UPDATE veiculos
@@ -47,7 +46,7 @@ module.exports = {
     return result.rows[0];
   },
 
-  // continua usando para o controle automático nas locações:
+  // atualiza status
   async atualizarStatus(id, status) {
     await pool.query(
       `UPDATE veiculos SET status = $1 WHERE id = $2`,
@@ -55,6 +54,7 @@ module.exports = {
     );
   },
 
+  // deletar
   async deletar(id) {
     await pool.query('DELETE FROM veiculos WHERE id = $1', [id]);
   }

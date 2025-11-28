@@ -11,7 +11,7 @@ module.exports = {
       return res.redirect('/clientes?error=Cliente não encontrado');
     }
 
-    // busca locações do cliente
+    // busca locacoes do cliente
     const locacoes = await LocacaoModel.buscarPorCliente(id);
 
     return res.render('pages/relatorios/cliente', {

@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config(); // carregar variaveis de ambiente
 const express = require('express');
 const path = require('path');
 
@@ -31,6 +31,7 @@ app.use((req, res, next) => {
   next();
 });
 
+// formatar data
 app.locals.formatDate = dateHelper.formatDate;
 
 // rotas

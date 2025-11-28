@@ -4,24 +4,25 @@ const router = express.Router();
 const ClienteController = require('../controllers/clienteController');
 const requireAuth = require('../middlewares/auth');
 
+// protecao de pag
 router.use(requireAuth);
 
-// Listar todos
+// listar todos
 router.get('/', ClienteController.listar);
 
-// Form de novo cliente
+// form de novo cliente
 router.get('/novo', ClienteController.novoForm);
 
-// Criar cliente
+// criar cliente
 router.post('/', ClienteController.criar);
 
-// Form de edição
+// form de edicao
 router.get('/:id/editar', ClienteController.editarForm);
 
-// Atualizar cliente
+// atualizar
 router.post('/:id', ClienteController.atualizar);
 
-// Excluir cliente
+// deletar
 router.post('/:id/deletar', ClienteController.deletar);
 
 module.exports = router;

@@ -13,7 +13,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-// estáticos
+// estaticos
 app.use(express.static(path.join(__dirname, "..", "public")));
 
 // middlewares básicos
@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(methodOverride("_method"));
 app.use(morgan("dev"));
 
-// sessão (vamos usar depois para login)
+// sessao
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "dev",
@@ -36,7 +36,7 @@ app.use(
 const homeRoutes = require("./routes/homeRoutes");
 app.use("/", homeRoutes);
 
-// testa conexão ao subir
+// testa conexao com o banco
 testConnection();
 
 module.exports = app;

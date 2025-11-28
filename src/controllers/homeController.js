@@ -1,11 +1,11 @@
 const { sequelize } = require("../config/db");
 
 exports.index = async (req, res) => {
-  let dbOk = true;
+  let dbOk = true; // status do banco
   try {
-    await sequelize.authenticate();
+    await sequelize.authenticate(); // testa conexao
   } catch {
-    dbOk = false;
+    dbOk = false; // erro na conexao
   }
-  res.render("pages/home", { title: "Locadora — Home", dbOk });
+  res.render("pages/home", { title: "Locadora — Home", dbOk }); // envia status para a view
 };
