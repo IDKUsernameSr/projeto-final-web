@@ -44,6 +44,8 @@ npm install
 
 ### 2. Execute o arquivo locadora_db.sql no PostgreSQL para criar as tabelas
 
+### 3. (Caso Necessário) Alterar o PGPASSWORD no .env para a do Postgre de seu computador
+
 ---
 
 ## 4. Executar o Servidor
